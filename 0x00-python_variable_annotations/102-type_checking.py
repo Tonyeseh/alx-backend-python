@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+"""102-type_checking"""
 from typing import List, Tuple
 
 
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
+    """some function to validate typing"""
     zoomed_in: List = [
         item for item in lst
         for i in range(factor)
