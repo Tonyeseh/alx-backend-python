@@ -11,7 +11,7 @@ class TestAccessNestedMap(unittest.TestCase):
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
         ({"a": {"b": 2}}, ("a",), {"b": 2}),
-        ({"a": {"b": 2}}, ("a", "b",),  2),
+        ({"a": {"b": 2}}, ("a", "b",), 2),
     ])
     def test_access_nested_map(self, nested_map, path, expected):
         """Test access_nested_map"""
@@ -42,9 +42,10 @@ class TestGetJson(unittest.TestCase):
             self.assertEqual(get_json(test_url), test_payload)
             req_get.assert_called_once_with(test_url)
 
+
 class TestMemoize(unittest.TestCase):
     """Test for utils.memoize"""
-    
+
     def test_memoize(self):
         """Test memoize"""
         class TestClass:
@@ -55,8 +56,8 @@ class TestMemoize(unittest.TestCase):
             @memoize
             def a_property(self):
                 return self.a_method()
-        
-        with patch.object(TestClass, 'a_method', return_value = lambda: 42) as mocked:
+
+        with patch.object(TestClass, 'a_method', return_value=lambda: 42) as mocked:
             test_class = TestClass()
             self.assertEqual(test_class.a_property(), 42)
             self.assertEqual(test_class.a_property(), 42)
